@@ -1,9 +1,13 @@
 {
-  "name": "cookie-bar",
-  "version": "0.9.0",
+  "name": "cookiebar",
+  "version": "0.9.1",
   "description": "This is simple cookie-bar.",
   "main": "index.js",
+  "config": {
+    "port": "8080"
+  },
   "scripts": {
+    "start": "gulp start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

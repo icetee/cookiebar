@@ -1,8 +1,8 @@
 var Cookiebar = function(opt) {
     this.opt = extend({
-        id: "cookie-bar",
-        cls: "cookie-bar",
-        cookie: "cookie_bar",
+        id: "cookiebar",
+        cls: "cookiebar",
+        cookie: "cookiebar",
         content: {
             description: "Az oldal sütiket használ a működéshez. Szolgáltatásaink igénybevételével Ön beleegyezik a sütik használatába!",
             link: "További információk",
@@ -109,9 +109,9 @@ Cookiebar.prototype.checkCookie = function() {
     var self = this,
         cookie = self.getCookie(self.cookie);
 
-    if ((self.exitsCookie() || cookie === null || cookie === "") && !cookie) {
-        self.setCookie(self.cookie, null, 365);
+    if ((self.exitsCookie() && (cookie === "null" || cookie === "")) && cookie !== "true") {
         self.draw();
         _("#" + self.id).fade(this.fade.type, this.fade.ms);
+        self.setCookie(self.cookie, null, 365);
     }
 };

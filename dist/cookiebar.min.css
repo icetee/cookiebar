@@ -1,0 +1,11 @@
+/**
+ * cookiebar - This is simple cookie-bar.
+ * Date 2016-05-18T19:36:32Z
+ * 
+ * @author Tamás András Horváth <htomy92@gmail.com> (http://icetee.hu)
+ * @version v0.9.1
+ * @link https://github.com/icetee/cookie-bar#readme
+ * @license MIT
+ */
+
+.cookiebar{background-color:#2c3e50;bottom:0;box-sizing:initial;color:#fff;height:40px;left:0;line-height:2.3em;padding:15px;position:absolute;width:calc(100% - 30px)}.cookiebar-desciption{float:left;font-size:1em;line-height:2.3em}.cookiebar-button{float:left}.cookiebar-link a{color:#3498db;padding-left:5px;text-decoration:none}.cookiebar-link a:hover{text-decoration:underline}.cookiebar-btn{background:#e74c3c none repeat scroll 0 0;border:0 none;color:#fff;cursor:pointer;padding:5px 10px;position:absolute;right:20px;text-transform:uppercase;top:20px}.cookiebar-btn:hover{background:#d34c37 none repeat scroll 0 0}

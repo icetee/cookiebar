@@ -1,9 +1,9 @@
 /**
- * cookie-bar - This is simple cookie-bar.
- * Date 2016-05-18T05:18:07Z
+ * cookiebar - This is simple cookie-bar.
+ * Date 2016-05-18T19:36:32Z
  * 
  * @author Tamás András Horváth <htomy92@gmail.com> (http://icetee.hu)
- * @version v0.9.0
+ * @version v0.9.1
  * @link https://github.com/icetee/cookie-bar#readme
  * @license MIT
  */
@@ -99,9 +99,9 @@ var addEventListener = function(el, eventName, handler) {
 
 var Cookiebar = function(opt) {
     this.opt = extend({
-        id: "cookie-bar",
-        cls: "cookie-bar",
-        cookie: "cookie_bar",
+        id: "cookiebar",
+        cls: "cookiebar",
+        cookie: "cookiebar",
         content: {
             description: "Az oldal sütiket használ a működéshez. Szolgáltatásaink igénybevételével Ön beleegyezik a sütik használatába!",
             link: "További információk",
@@ -208,20 +208,9 @@ Cookiebar.prototype.checkCookie = function() {
     var self = this,
         cookie = self.getCookie(self.cookie);
 
-    if ((self.exitsCookie() || cookie === null || cookie === "") && !cookie) {
-        self.setCookie(self.cookie, null, 365);
+    if ((self.exitsCookie() && (cookie === "null" || cookie === "")) && cookie !== "true") {
         self.draw();
         _("#" + self.id).fade(this.fade.type, this.fade.ms);
+        self.setCookie(self.cookie, null, 365);
     }
 };
-
-/**
- * If loaded DOM elements
- **/
-ready(function() {
-    var cookiebar = new Cookiebar({
-        debug: 1
-    });
-
-    cookiebar.exitsCookie();
-});
