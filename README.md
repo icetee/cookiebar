@@ -1,4 +1,5 @@
 # Cookiebar
+It is a pure JS code, that warns the visitors in the notification bar, the page saves cookies. This is Compliant with the new EU cookie law.
 
 # About
 
@@ -47,6 +48,8 @@ ready(function() {
 
 - [x] Vanilla javascript (no dependencies)
 - [x] Only appears when you use cookies
+- [ ] Add support language
+- [ ] Check AdBlocker
 
 # Build
 
