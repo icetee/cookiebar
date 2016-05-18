@@ -5,9 +5,9 @@ const gulp = require('gulp'),
     rename = require('gulp-rename'),
     concat = require('gulp-concat'),
     header = require('gulp-header'),
+    server = require('gulp-express'),
     cssnano = require('gulp-cssnano'),
-    autoprefixer = require('gulp-autoprefixer'),
-    server = require('gulp-express');
+    autoprefixer = require('gulp-autoprefixer');
 
 // Import the package
 const pkg = require('./package.json');

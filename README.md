@@ -12,8 +12,8 @@ If you use jQuery, it might be worth trying: [jquery.cookiebar](https://github.c
 
 ## Install
 
-- Using npm: `npm install cookiebar`
-- Using bower: `bower install cookiebar`
+- Using npm: `$ npm install cookiebar`
+- Using bower: `$ bower install cookiebar`
 
 or download latest release from [github](https://github.com/icetee/cookie-bar/releases).
 
@@ -32,6 +32,7 @@ and include footer, before close `</body>` tag (all pages)
 ```
 
 and add this code your script file ...
+
 ```javascript
 ready(function() {
     var cookiebar = new Cookiebar({
@@ -43,8 +44,9 @@ ready(function() {
 ```
 
 # Features
-+ [x] Vanilla javascript (no dependencies)
-+ [x] Only appears when you use cookies
+
+- [x] Vanilla javascript (no dependencies)
+- [x] Only appears when you use cookies
 
 # Build
 

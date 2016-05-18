@@ -1,0 +1,29 @@
+{
+  "name": "cookiebar",
+  "description": "It is a pure JS code, that warns the visitors in the notification bar, the page saves cookies. This is Compliant with the new EU cookie law.",
+  "main": "index.js",
+  "authors": [
+    "Tamás András Horváth <htomy92@gmail.com> (http://icetee.hu)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "cookie",
+    "bar",
+    "eu",
+    "law",
+    "pure",
+    "vanilla"
+  ],
+  "homepage": "https://github.com/icetee/cookiebar",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/icetee/cookiebar.git"
+  }
+}
