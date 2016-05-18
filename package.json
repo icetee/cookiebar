@@ -1,0 +1,39 @@
+{
+  "name": "cookie-bar",
+  "version": "0.9.0",
+  "description": "This is simple cookie-bar.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/icetee/cookie-bar.git"
+  },
+  "keywords": [
+    "cookie",
+    "bar",
+    "eu",
+    "law"
+  ],
+  "author": "Tamás András Horváth <htomy92@gmail.com> (http://icetee.hu)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/icetee/cookie-bar/issues"
+  },
+  "homepage": "https://github.com/icetee/cookie-bar#readme",
+  "devDependencies": {
+    "express": "^4.13.4",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-express": "^0.3.5",
+    "gulp-header": "^1.8.2",
+    "gulp-jshint": "^2.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.3",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0"
+  }
+}
