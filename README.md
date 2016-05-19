@@ -1,5 +1,5 @@
 # Cookiebar
-[![Build status](https://ci.appveyor.com/api/projects/status/i2r4lcckug64e1k8?svg=true)](https://ci.appveyor.com/project/icetee/cookiebar)
+[![Build Status](https://travis-ci.org/icetee/cookiebar.svg?branch=master)](https://travis-ci.org/icetee/cookiebar)
 
 It is a pure JS code, that warns the visitors in the notification bar, the page saves cookies. This is Compliant with the new EU cookie law.
 
