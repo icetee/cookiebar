@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Cookiebar by icetee</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Cookiebar</h1>
+      <h2 class="project-tagline">It is a pure JS code, that warns the visitors in the notification bar, the page saves cookies. This is Compliant with the new EU cookie law.</h2>
+      <a href="https://github.com/icetee/cookiebar" class="btn">View on GitHub</a>
+      <a href="https://github.com/icetee/cookiebar/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/icetee/cookiebar/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="cookiebar" class="anchor" href="#cookiebar" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cookiebar</h1>
+
+<p><a href="https://travis-ci.org/icetee/cookiebar"><img src="https://img.shields.io/travis/icetee/cookiebar.svg" alt="Build Status"></a>
+<a href="https://raw.githubusercontent.com/icetee/cookiebar/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="GitHub license"></a>
+<a href="https://david-dm.org/icetee/cookiebar#info=dependencies&amp;view=list"><img src="https://david-dm.org/icetee/cookiebar.svg" alt="Dependency Status"></a>
+<a href="https://david-dm.org/icetee/cookiebar#info=devDependencies"><img src="https://david-dm.org/icetee/cookiebar/dev-status.svg" alt="devDependency Status"></a></p>
+
+<p>It is a pure JS code, that warns the visitors in the notification bar, the page saves cookies. This is Compliant with the new EU cookie law.</p>
+
+<h1>
+<a id="about" class="anchor" href="#about" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>About</h1>
+
+<p>Because of the changes in the (<a href="http://ec.europa.eu/ipg/basics/legal/cookies/index_en.htm">EU Cookie Law</a>), the website operators must inform the visitors about the site's use of cookies.</p>
+
+<p>This simple script is free of dependencies, does not require use of framework. The minimalized version is less than 5 Kb. The Cookie bar gives the opportunity for the guest to know about active cookie usage.</p>
+
+<p>If you use jQuery, it might be worth trying: <a href="https://github.com/delboy1978uk/jquery.cookiebar">jquery.cookiebar</a>.</p>
+
+<h1>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Getting started</h1>
+
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h2>
+
+<ul>
+<li>Using npm: <code>$ npm install cookiebar</code>
+</li>
+<li>Using bower: <code>$ bower install cookiebar</code>
+</li>
+</ul>
+
+<p>or download latest release from <a href="https://github.com/icetee/cookie-bar/releases">github</a>.</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Include header (all pages)</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">link</span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>dist/cookiebar.min.css<span class="pl-pds">"</span></span> <span class="pl-e">media</span>=<span class="pl-s"><span class="pl-pds">"</span>screen<span class="pl-pds">"</span></span> <span class="pl-e">charset</span>=<span class="pl-s"><span class="pl-pds">"</span>utf-8<span class="pl-pds">"</span></span>&gt;</pre></div>
+
+<p>and include footer, before close <code>&lt;/body&gt;</code> tag (all pages)</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>dist/cookiebar.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<p>and add this code your script file ...</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">ready</span>(<span class="pl-k">function</span>() {
+    <span class="pl-k">var</span> cookiebar <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">Cookiebar</span>({
+        id<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>cookiebar<span class="pl-pds">"</span></span>,
+        cls<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>cookiebar<span class="pl-pds">"</span></span>,
+        cookie<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>cookiebar<span class="pl-pds">"</span></span>
+    });
+});</pre></div>
+
+<h1>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h1>
+
+<ul>
+<li>[x] Vanilla javascript (no dependencies)</li>
+<li>[x] Only appears when you use cookies</li>
+<li>[ ] Add support language</li>
+<li>[ ] Check AdBlocker</li>
+</ul>
+
+<h1>
+<a id="build" class="anchor" href="#build" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Build</h1>
+
+<p>Request <a href="https://nodejs.org/en">Node.js</a> and <a href="http://gulpjs.com">gulp-cli</a>. Install devDependencies from package.json</p>
+
+<div class="highlight highlight-source-shell"><pre>npm install</pre></div>
+
+<h4>
+<a id="note" class="anchor" href="#note" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Note</h4>
+
+<ul>
+<li>Browsers default don't support Cookies in local files!
+
+<ul>
+<li>Use webserver <code>$ gulp server</code>
+</li>
+</ul>
+</li>
+</ul>
+
+<h1>
+<a id="contribute" class="anchor" href="#contribute" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contribute</h1>
+
+<p>You can contribute with <strong>Cookiebar</strong> installing it and submitting issues and pull requests.</p>
+
+<p>NOTE: Please no pull dist folder.</p>
+
+<h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h1>
+
+<p>MIT © <a href="https://github.com/icetee">Tamás András Horváth</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/icetee/cookiebar">Cookiebar</a> is maintained by <a href="https://github.com/icetee">icetee</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
