@@ -1,9 +1,9 @@
 /**
  * cookiebar - It is a pure JS code, that warns the visitors in the notification bar, the page saves cookies. This is Compliant with the new EU cookie law.
- * Date 2016-05-23T00:32:53Z
+ * Date 2016-05-23T07:51:40Z
  * 
  * @author Tamás András Horváth <htomy92@gmail.com> (http://icetee.hu)
- * @version v0.9.1
+ * @version v0.9.2
  * @link https://github.com/icetee/cookiebar#readme
  * @license MIT
  */
