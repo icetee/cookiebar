@@ -34,3 +34,6 @@ node_modules
 
 # Remote-FTP config
 .ftpconfig
+
+# OS special
+.DS_Store

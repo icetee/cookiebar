@@ -3,25 +3,27 @@
     bottom: 0;
     box-sizing: initial;
     color: #fff;
-    height: 50px;
+    min-height: 50px;
     left: 0;
     position: fixed;
     width: 100%;
 }
 .cookiebar-wrapper {
     height: 100%;
+    overflow: hidden;
     padding: 14px;
+    width: 85%;
 }
 .cookiebar-desciption {
-    float: left;
+    display: inline;
     font-size: 1em;
 }
-.cookiebar-button {
-    float: left;
+.cookiebar-link {
+    display: inline;
+    padding-left: 5px;
 }
 .cookiebar-link a {
     color: #3498db;
-    padding-left: 5px;
     text-decoration: none;
 }
 .cookiebar-link a:hover {
@@ -38,7 +40,9 @@
     position: absolute;
     right: 20px;
     text-transform: uppercase;
-    top: 11px;
+    margin: auto;
+    top: 0;
+    bottom: 0;
 }
 .cookiebar-btn:hover {
     background: #d34c37 none repeat scroll 0 0;
