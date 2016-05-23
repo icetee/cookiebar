@@ -36,6 +36,7 @@ Cookiebar.prototype.init = function() {
     var self = this;
     if (self.debug) {
         self.setCookie('debug_cookibar', "test", 365, function() {
+            self.delCookie(self.id);
             self.checkCookie();
         });
     } else {
@@ -75,6 +76,10 @@ Cookiebar.prototype.setCookie = function(cname, value, exdays, cb) {
     }
 };
 
+Cookiebar.prototype.delCookie = function(cname) {
+    document.cookie = cname + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+};
+
 Cookiebar.prototype.draw = function() {
     var self = this,
         bar = document.createElement('div'),
@@ -108,10 +113,8 @@ Cookiebar.prototype.draw = function() {
             e.returnValue = false;
         }
 
-        self.setCookie(self.cookie, true, 365, function() {
-            self.setStatus(self.cookie);
-        });
-
+        self.setCookie(self.cookie, true, 365);
+        self.setStatus(true);
         document.getElementById(self.id).style.display = 'none';
     });
 
@@ -122,7 +125,7 @@ Cookiebar.prototype.checkCookie = function() {
     var self = this,
         cookie = self.getCookie(self.cookie);
 
-    if ((self.exitsCookie() && (cookie === "null" || cookie === "")) && cookie !== "true") {
+    if ((/*self.exitsCookie() &&*/ (cookie === "null" || cookie === "")) && cookie !== "true") {
         self.draw();
         _("#" + self.id).fade(this.fade.type, this.fade.ms);
         self.setCookie(self.cookie, null, 365);
@@ -132,8 +135,8 @@ Cookiebar.prototype.checkCookie = function() {
 };
 
 Cookiebar.prototype.setStatus = function(status) {
-    if (status === "true") {
-        this.status = true;
+    if (!!status) {
+        this.status = !!status;
     }
 };
 

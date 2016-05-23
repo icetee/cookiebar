@@ -64,6 +64,10 @@ Request [Node.js](https://nodejs.org/en) and [gulp-cli](http://gulpjs.com). Inst
 npm install
 ```
 
+#### Note
+- Browsers default don't support Cookies in local files!
+ - Use webserver `$ gulp server`
+
 # Contribute
 
 You can contribute with **Cookiebar** installing it and submitting issues and pull requests.
