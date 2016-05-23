@@ -32,7 +32,7 @@ const paths = {
         js: 'src/**/*.js',
         css: 'src/**/*.css'
     },
-    dist: 'dist/'
+    dist: './dist/'
 };
 
 // Assets

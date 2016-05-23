@@ -3,17 +3,18 @@
     bottom: 0;
     box-sizing: initial;
     color: #fff;
-    height: 40px;
+    height: 50px;
     left: 0;
-    line-height: 2.3em;
-    padding: 15px;
-    position: absolute;
-    width: calc(100% - 30px);
+    position: fixed;
+    width: 100%;
+}
+.cookiebar-wrapper {
+    height: 100%;
+    padding: 14px;
 }
 .cookiebar-desciption {
     float: left;
     font-size: 1em;
-    line-height: 2.3em;
 }
 .cookiebar-button {
     float: left;
@@ -31,11 +32,13 @@
     border: 0 none;
     color: #fff;
     cursor: pointer;
-    padding: 5px 10px;
+    font-size: 0.875em;
+    height: 28px;
+    padding: 0 10px 2px;
     position: absolute;
     right: 20px;
     text-transform: uppercase;
-    top: 20px;
+    top: 11px;
 }
 .cookiebar-btn:hover {
     background: #d34c37 none repeat scroll 0 0;

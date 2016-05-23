@@ -1,5 +1,8 @@
 # Cookiebar
-[![Build Status](https://travis-ci.org/icetee/cookiebar.svg?branch=master)](https://travis-ci.org/icetee/cookiebar)
+[![Build Status](https://img.shields.io/travis/icetee/cookiebar.svg)](https://travis-ci.org/icetee/cookiebar)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/icetee/cookiebar/master/LICENSE)
+[![Dependency Status](https://david-dm.org/icetee/cookiebar.svg)](https://david-dm.org/icetee/cookiebar#info=dependencies&view=list)
+[![devDependency Status](https://david-dm.org/icetee/cookiebar/dev-status.svg)](https://david-dm.org/icetee/cookiebar#info=devDependencies)
 
 It is a pure JS code, that warns the visitors in the notification bar, the page saves cookies. This is Compliant with the new EU cookie law.
 

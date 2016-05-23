@@ -1,6 +1,6 @@
 /**
  * cookiebar - It is a pure JS code, that warns the visitors in the notification bar, the page saves cookies. This is Compliant with the new EU cookie law.
- * Date 2016-05-18T20:50:10Z
+ * Date 2016-05-23T00:32:53Z
  * 
  * @author Tamás András Horváth <htomy92@gmail.com> (http://icetee.hu)
  * @version v0.9.1
@@ -122,6 +122,7 @@ var Cookiebar = function(opt) {
     this.content = this.opt.content;
     this.debug = this.opt.debug;
     this.fade = this.opt.fade;
+    this.status = false;
 
     //Initialize
     this.init();
@@ -155,19 +156,22 @@ Cookiebar.prototype.getCookie = function(cname) {
     return "";
 };
 
-Cookiebar.prototype.setCookie = function(cname, value, exdays) {
+Cookiebar.prototype.setCookie = function(cname, value, exdays, cb) {
     var ex = new Date();
     ex.setDate(ex.getDate() + exdays);
 
     var cvalue = escape(value) + ((exdays === null) ? "" : "; expires=" + ex.toUTCString() + "; path=/");
 
     document.cookie = cname + "=" + cvalue;
+    if (typeof cb === "function") {
+        cb();
+    }
 };
 
 Cookiebar.prototype.draw = function() {
     var self = this,
         bar = document.createElement('div'),
-        html = '' +
+        html = '<div class="' + this.cls + '-wrapper">' +
         '<div class="' + this.cls + '-desciption">' +
         this.content.description +
         '</div>' +
@@ -181,6 +185,7 @@ Cookiebar.prototype.draw = function() {
         '</div>' +
         '<div class="' + this.cls + '-more" style="display: none;">' +
         this.content.more +
+        '</div>' +
         '</div>';
 
     bar.id = self.id;
@@ -196,7 +201,9 @@ Cookiebar.prototype.draw = function() {
             e.returnValue = false;
         }
 
-        self.setCookie(self.cookie, true, 365);
+        self.setCookie(self.cookie, true, 365, function() {
+            self.status = true;
+        });
 
         document.getElementById(self.id).style.display = 'none';
     });
@@ -213,4 +220,8 @@ Cookiebar.prototype.checkCookie = function() {
         _("#" + self.id).fade(this.fade.type, this.fade.ms);
         self.setCookie(self.cookie, null, 365);
     }
+};
+
+Cookiebar.prototype.getStatus = function() {
+    return this.status;
 };

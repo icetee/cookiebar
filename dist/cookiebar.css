@@ -1,6 +1,6 @@
 /**
  * cookiebar - It is a pure JS code, that warns the visitors in the notification bar, the page saves cookies. This is Compliant with the new EU cookie law.
- * Date 2016-05-18T20:50:10Z
+ * Date 2016-05-23T00:32:53Z
  * 
  * @author Tamás András Horváth <htomy92@gmail.com> (http://icetee.hu)
  * @version v0.9.1
@@ -13,17 +13,18 @@
     bottom: 0;
     box-sizing: initial;
     color: #fff;
-    height: 40px;
+    height: 50px;
     left: 0;
-    line-height: 2.3em;
-    padding: 15px;
-    position: absolute;
-    width: calc(100% - 30px);
+    position: fixed;
+    width: 100%;
+}
+.cookiebar-wrapper {
+    height: 100%;
+    padding: 14px;
 }
 .cookiebar-desciption {
     float: left;
     font-size: 1em;
-    line-height: 2.3em;
 }
 .cookiebar-button {
     float: left;
@@ -41,11 +42,13 @@
     border: 0 none;
     color: #fff;
     cursor: pointer;
-    padding: 5px 10px;
+    font-size: 0.875em;
+    height: 28px;
+    padding: 0 10px 2px;
     position: absolute;
     right: 20px;
     text-transform: uppercase;
-    top: 20px;
+    top: 11px;
 }
 .cookiebar-btn:hover {
     background: #d34c37 none repeat scroll 0 0;

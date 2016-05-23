@@ -1,6 +1,6 @@
 /**
  * cookiebar - It is a pure JS code, that warns the visitors in the notification bar, the page saves cookies. This is Compliant with the new EU cookie law.
- * Date 2016-05-18T20:50:10Z
+ * Date 2016-05-23T00:32:53Z
  * 
  * @author Tamás András Horváth <htomy92@gmail.com> (http://icetee.hu)
  * @version v0.9.1
@@ -8,4 +8,4 @@
  * @license MIT
  */
 
-.cookiebar{background-color:#2c3e50;bottom:0;box-sizing:initial;color:#fff;height:40px;left:0;line-height:2.3em;padding:15px;position:absolute;width:calc(100% - 30px)}.cookiebar-desciption{float:left;font-size:1em;line-height:2.3em}.cookiebar-button{float:left}.cookiebar-link a{color:#3498db;padding-left:5px;text-decoration:none}.cookiebar-link a:hover{text-decoration:underline}.cookiebar-btn{background:#e74c3c none repeat scroll 0 0;border:0 none;color:#fff;cursor:pointer;padding:5px 10px;position:absolute;right:20px;text-transform:uppercase;top:20px}.cookiebar-btn:hover{background:#d34c37 none repeat scroll 0 0}
+.cookiebar{background-color:#2c3e50;bottom:0;box-sizing:initial;color:#fff;height:50px;left:0;position:fixed;width:100%}.cookiebar-wrapper{height:100%;padding:14px}.cookiebar-desciption{float:left;font-size:1em}.cookiebar-button{float:left}.cookiebar-link a{color:#3498db;padding-left:5px;text-decoration:none}.cookiebar-link a:hover{text-decoration:underline}.cookiebar-btn{background:#e74c3c none repeat scroll 0 0;border:0 none;color:#fff;cursor:pointer;font-size:.875em;height:28px;padding:0 10px 2px;position:absolute;right:20px;text-transform:uppercase;top:11px}.cookiebar-btn:hover{background:#d34c37 none repeat scroll 0 0}
