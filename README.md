@@ -1,4 +1,7 @@
 # Cookiebar
+
+![alt text](https://github.com/icetee/cookiebar/tree/master/img/cookiebar.svg "Cookiebar logo")
+
 [![Build Status](https://img.shields.io/travis/icetee/cookiebar.svg)](https://travis-ci.org/icetee/cookiebar)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/icetee/cookiebar/master/LICENSE)
 [![Dependency Status](https://david-dm.org/icetee/cookiebar.svg)](https://david-dm.org/icetee/cookiebar#info=dependencies&view=list)

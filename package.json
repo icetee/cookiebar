@@ -1,6 +1,6 @@
 {
   "name": "cookiebar",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "It is a pure JS code, that warns the visitors in the notification bar, the page saves cookies. This is Compliant with the new EU cookie law.",
   "main": "index.js",
   "config": {
