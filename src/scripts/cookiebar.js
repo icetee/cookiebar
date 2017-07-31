@@ -219,8 +219,6 @@ var Cookiebar = (function(doc) {
             if (doc.body.style.marginBottom !== self.bodyMargBotBackup) {
                 doc.body.style.marginBottom = self.bodyMargBotBackup;
             }
-
-            doc.body.removeAttribute('style');
         });
 
         v.addEvent(window, 'resize', function() {
