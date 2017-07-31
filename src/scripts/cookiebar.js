@@ -1,4 +1,4 @@
-var Cookiebar = (function() {
+var Cookiebar = (function(doc) {
 
     function _(el) {
         if (!(this instanceof _)) {
@@ -8,11 +8,11 @@ var Cookiebar = (function() {
         var first = el.charAt(0);
 
         if (first === "#") {
-            this.el = document.getElementById(el.substr(1));
+            this.el = doc.getElementById(el.substr(1));
         } else if (first === ".") {
-            this.el = document.getElementsByClassName(el.substr(1));
+            this.el = doc.getElementsByClassName(el.substr(1));
         } else {
-            this.el = document.getElementsByTagName(el);
+            this.el = doc.getElementsByTagName(el);
         }
     }
 
@@ -49,7 +49,8 @@ var Cookiebar = (function() {
             if (typeof from !== 'object') continue;
             for (var j in from) {
                 if (from.hasOwnProperty(j)) {
-                    target[j] = typeof from[j] === 'object' ? this.extend({}, target[j], from[j]) : from[j];
+                    target[j] = typeof from[j] === 'object' ?
+                        this.extend({}, target[j], from[j]) : from[j];
                 }
             }
         }
@@ -57,7 +58,7 @@ var Cookiebar = (function() {
     };
 
     Vanilla.prototype.trigger = function(el, eventName) {
-        var event = document.createEvent('Event');
+        var event = doc.createEvent('Event');
         event.initEvent(eventName, true, true);
         el.dispatchEvent(event);
     };
@@ -110,9 +111,9 @@ var Cookiebar = (function() {
             debug: 0,
             exits: true
         }, opt || {});
-
         this.data = this.opt;
-        this.status = false;
+        this.bodyMargBotBackup = doc.body.style.marginBottom || "";
+        this.visible = false;
 
         //Initialize
         this.init();
@@ -131,12 +132,12 @@ var Cookiebar = (function() {
     };
 
     Cookiebar.prototype.exitsCookie = function() {
-        return document.cookie.length > 0;
+        return this.getCookie(this.data.cookie) === "true";
     };
 
     Cookiebar.prototype.getCookie = function(cname) {
         var name = cname + "=";
-        var ca = document.cookie.split(';');
+        var ca = doc.cookie.split(';');
         for (var i = 0; i < ca.length; i++) {
             var c = ca[i];
             while (c.charAt(0) == ' ') {
@@ -153,9 +154,11 @@ var Cookiebar = (function() {
         var ex = new Date();
         ex.setDate(ex.getDate() + exdays);
 
-        var cvalue = escape(value) + ((exdays === null) ? "" : "; expires=" + ex.toUTCString() + "; path=/;");
+        var cvalue = escape(value) + (
+            exdays === null ? "" : "; expires=" + ex.toUTCString() + "; path=/;"
+        );
 
-        document.cookie = cname + "=" + cvalue;
+        doc.cookie = cname + "=" + cvalue;
 
         if (typeof cb === "function") {
             cb();
@@ -163,7 +166,7 @@ var Cookiebar = (function() {
     };
 
     Cookiebar.prototype.delCookie = function(cname) {
-        document.cookie = cname + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+        doc.cookie = cname + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
     };
 
     Cookiebar.prototype.html = function() {
@@ -191,13 +194,13 @@ var Cookiebar = (function() {
 
     Cookiebar.prototype.draw = function() {
         var self = this,
-            bar = document.createElement('div');
+            bar = doc.createElement('div');
 
         bar.id = self.data.id;
         bar.className = self.data.cls;
         bar.innerHTML = self.html();
 
-        document.body.insertBefore(bar, document.body.firstChild);
+        doc.body.insertBefore(bar, doc.body.firstChild);
 
         var btn = bar.getElementsByClassName(self.data.cls + '-btn')[0];
 
@@ -208,21 +211,20 @@ var Cookiebar = (function() {
                 e.returnValue = false;
             }
 
+            this.visible = false;
+            v.removeEvent(window, 'resize');
             self.setCookie(self.data.cookie, true, 365);
-            self.setStatus(true);
             bar.style.display = 'none';
 
-            document.body.removeAttribute('style');
-            v.removeEvent(window, 'resize');
+            if (doc.body.style.marginBottom !== self.bodyMargBotBackup) {
+                doc.body.style.marginBottom = self.bodyMargBotBackup;
+            }
         });
 
         v.addEvent(window, 'resize', function() {
             var height = bar.offsetHeight;
-
-            if (!self.status) {
-                document.body.style.margin = "0 0 " + height + "px";
-            } else {
-                document.body.removeAttribute('style');
+            if (self.visible) {
+                doc.body.style.marginBottom = height + "px";
             }
         });
 
@@ -230,28 +232,17 @@ var Cookiebar = (function() {
     };
 
     Cookiebar.prototype.checkCookie = function() {
-        var self = this,
-            cookie = self.getCookie(self.data.cookie),
-            exits = (self.data.exits) ? self.exitsCookie() : 1;
-
-        if ((exits && (cookie === "null" || cookie === "")) && cookie !== "true") {
-            self.draw();
-            _("#" + self.data.id).fade(self.data.fade.type, self.data.fade.ms);
-            self.setCookie(self.data.cookie, null, 365);
-        }
-
-        self.setStatus(cookie);
-    };
-
-    Cookiebar.prototype.setStatus = function(status) {
-        if (!!status) {
-            this.data.status = !!status;
+        if (!this.exitsCookie()) {
+            this.draw();
+            _("#" + this.data.id).fade(this.data.fade.type, this.data.fade.ms);
+            this.setCookie(this.data.cookie, null, 365);
+            this.visible = true;
+        } else {
+            this.visible = false;
         }
     };
 
-    Cookiebar.prototype.getStatus = function() {
-        return this.data.status;
-    };
-
+    
     return Cookiebar;
-})();
+    
+})(document);
