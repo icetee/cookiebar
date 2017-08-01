@@ -122,7 +122,6 @@ var Cookiebar = (function(doc) {
             btnClick: function(e) {
                 if (e && e.preventDefault) e.preventDefault();
                 else if (typeof e === 'object') e.returnValue = false;
-
                 self.accept();
             },
             winResize: function() {
@@ -139,8 +138,7 @@ var Cookiebar = (function(doc) {
 
         if (self.data.debug) {
             self.setCookie('debug_cookibar', "test", 365, function() {
-                self.delCookie(self.data.id);
-                self.checkCookie();
+                self.withdraw();
             });
         } else {
             self.checkCookie();
@@ -204,9 +202,10 @@ var Cookiebar = (function(doc) {
         });
     };
 
-    Cookiebar.prototype.denny = function() {
+    Cookiebar.prototype.withdraw = function() {
         this.delCookie(this.data.id);
         this.accepted = false;
+        this.checkCookie();
     };
 
     Cookiebar.prototype.accept = function() {
@@ -248,14 +247,12 @@ var Cookiebar = (function(doc) {
 
     Cookiebar.prototype.checkCookie = function() {
         this.accepted = this.getCookie(this.data.cookie) === "true";
-
         if (!this.accepted) { this.draw(); }
     };
 
     Cookiebar.prototype.getStatus = function() {
         return this.accepted;
     };
-
 
     return Cookiebar;
 })(document);
