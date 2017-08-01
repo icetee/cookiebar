@@ -70,8 +70,9 @@ var Cookiebar = (function(doc) {
      */
 
     Vanilla.prototype.addEvent = function(el, type, handler) {
-        if (el.attachEvent) el.attachEvent('on' + type, handler);
-        else el.addEventListener(type, handler);
+        return (el[window.attachEvent ? 'attachEvent' : 'addEventListener'](
+            (window.attachEvent ? 'on' : '')+type, handler, true
+        ));
     };
 
     Vanilla.prototype.removeEvent = function(el, type, handler) {
@@ -92,6 +93,7 @@ var Cookiebar = (function(doc) {
     var v = new Vanilla();
 
     var Cookiebar = function(opt) {
+        var self = this;
         this.opt = v.extend({
             id: "cookiebar",
             cls: "cookiebar",
@@ -111,33 +113,42 @@ var Cookiebar = (function(doc) {
             debug: 0,
             exits: true
         }, opt || {});
+
+        this.bar = null;
         this.data = this.opt;
         this.bodyMargBotBackup = doc.body.style.marginBottom || "";
-        this.visible = false;
-
+        this.accepted = false;
+        this.events = {
+            btnClick: function(e) {
+                if (e && e.preventDefault) e.preventDefault();
+                else if (typeof e === 'object') e.returnValue = false;
+                self.accept();
+            },
+            winResize: function() {
+                if (self.accepted) { return; }
+                doc.body.style.marginBottom = self.bar.offsetHeight + "px";
+            }
+        };
         //Initialize
         this.init();
     };
 
     Cookiebar.prototype.init = function() {
         var self = this;
+
         if (self.data.debug) {
             self.setCookie('debug_cookibar', "test", 365, function() {
-                self.delCookie(self.data.id);
-                self.checkCookie();
+                self.withdraw();
             });
         } else {
             self.checkCookie();
         }
     };
 
-    Cookiebar.prototype.exitsCookie = function() {
-        return this.getCookie(this.data.cookie) === "true";
-    };
-
     Cookiebar.prototype.getCookie = function(cname) {
         var name = cname + "=";
         var ca = doc.cookie.split(';');
+
         for (var i = 0; i < ca.length; i++) {
             var c = ca[i];
             while (c.charAt(0) == ' ') {
@@ -161,7 +172,7 @@ var Cookiebar = (function(doc) {
         doc.cookie = cname + "=" + cvalue;
 
         if (typeof cb === "function") {
-            cb();
+            cb.call(this);
         }
     };
 
@@ -170,8 +181,7 @@ var Cookiebar = (function(doc) {
     };
 
     Cookiebar.prototype.html = function() {
-        var self = this,
-            html = '<div class="${cls}-wrapper">' +
+        var html = '<div class="${cls}-wrapper">' +
             '<div class="${cls}-desciption">${des}</div>' +
             '<div class="${cls}-link">' +
             '<a href="${href}">${link}</a>' +
@@ -183,66 +193,66 @@ var Cookiebar = (function(doc) {
             '</div>';
 
         return v.parseTemplate(html, {
-            cls: self.data.cls,
-            href: self.data.content.href,
-            link: self.data.content.link,
-            more: self.data.content.more,
-            btn: self.data.content.button,
-            des: self.data.content.description
+            cls: this.data.cls,
+            href: this.data.content.href,
+            link: this.data.content.link,
+            more: this.data.content.more,
+            btn: this.data.content.button,
+            des: this.data.content.description
         });
     };
 
-    Cookiebar.prototype.draw = function() {
-        var self = this,
-            bar = doc.createElement('div');
-
-        bar.id = self.data.id;
-        bar.className = self.data.cls;
-        bar.innerHTML = self.html();
-
-        doc.body.insertBefore(bar, doc.body.firstChild);
-
-        var btn = bar.getElementsByClassName(self.data.cls + '-btn')[0];
-
-        v.addEvent(btn, 'click', function(e) {
-            if (typeof e.preventDefault !== "undefined") {
-                e.preventDefault();
-            } else {
-                e.returnValue = false;
-            }
-
-            this.visible = false;
-            v.removeEvent(window, 'resize');
-            self.setCookie(self.data.cookie, true, 365);
-            bar.style.display = 'none';
-
-            if (doc.body.style.marginBottom !== self.bodyMargBotBackup) {
-                doc.body.style.marginBottom = self.bodyMargBotBackup;
-            }
-        });
-
-        v.addEvent(window, 'resize', function() {
-            var height = bar.offsetHeight;
-            if (self.visible) {
-                doc.body.style.marginBottom = height + "px";
-            }
-        });
-
-        v.trigger(window, 'resize');
+    Cookiebar.prototype.withdraw = function() {
+        this.delCookie(this.data.id);
+        this.accepted = false;
+        this.checkCookie();
     };
 
-    Cookiebar.prototype.checkCookie = function() {
-        if (!this.exitsCookie()) {
-            this.draw();
-            _("#" + this.data.id).fade(this.data.fade.type, this.data.fade.ms);
-            this.setCookie(this.data.cookie, null, 365);
-            this.visible = true;
-        } else {
-            this.visible = false;
+    Cookiebar.prototype.accept = function() {
+        this.accepted = true;
+        this.setCookie(this.data.cookie, true, 365);
+
+        v.removeEvent(window, 'resize', this.events.winResize);
+
+        if (this.bar) {
+            this.bar.style.display = 'none';
+        }
+        if (doc.body.style.marginBottom !== this.bodyMargBotBackup) {
+            doc.body.style.marginBottom = this.bodyMargBotBackup;
         }
     };
 
-    
+    Cookiebar.prototype.draw = function() {
+        var self = this, btn;
+
+        if (self.accepted) { return; }
+
+        if (!self.bar) {
+            self.bar = doc.createElement('div');
+            self.bar.id = self.data.id;
+            self.bar.className = self.data.cls;
+            self.bar.innerHTML = self.html();
+            doc.body.insertBefore(self.bar, doc.body.firstChild);
+            btn = self.bar.getElementsByClassName(self.data.cls + '-btn')[0];
+            v.addEvent(btn, 'click', self.events.btnClick);
+        }
+
+        v.addEvent(window, 'resize', self.events.winResize);
+        v.trigger(window, 'resize');
+
+        _("#" + self.data.id).fade(self.data.fade.type, self.data.fade.ms);
+
+        self.setCookie(self.data.cookie, null, 365);
+    };
+
+    Cookiebar.prototype.checkCookie = function() {
+        this.accepted = this.getCookie(this.data.cookie) === "true";
+        if (!this.accepted) { this.draw(); }
+    };
+
+    Cookiebar.prototype.getStatus = function() {
+        return this.accepted;
+    };
+
     return Cookiebar;
-    
 })(document);
