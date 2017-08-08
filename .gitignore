@@ -37,3 +37,5 @@ node_modules
 
 # OS special
 .DS_Store
+
+package-lock.json
