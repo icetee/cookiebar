@@ -1,8 +1,8 @@
 {
   "name": "cookiebar",
-  "version": "0.9.7",
+  "version": "1.0.0",
   "description": "It is a pure JS code, that warns the visitors in the notification bar, the page saves cookies. This is Compliant with the new EU cookie law.",
-  "main": "index.js",
+  "main": "dist/cookiebar.js",
   "config": {
     "port": "8080"
   },
@@ -12,7 +12,8 @@
   },
   "repository": "git+https://github.com/icetee/cookiebar.git",
   "files": [
-    "dist/*.{js, css}"
+    "dist/*.{js, css}",
+    "src/*.{js, css}"
   ],
   "keywords": [
     "cookie",
@@ -29,7 +30,7 @@
   },
   "homepage": "https://github.com/icetee/cookiebar#readme",
   "devDependencies": {
-    "express": "^4.13.4",
+    "express": "^4.16.4",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-concat": "^2.6.0",

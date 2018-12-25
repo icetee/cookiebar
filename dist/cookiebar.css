@@ -1,59 +1,90 @@
 /**
  * cookiebar - It is a pure JS code, that warns the visitors in the notification bar, the page saves cookies. This is Compliant with the new EU cookie law.
- * Date 2017-08-08T12:26:15Z
- *
- * @author Tamás András Horváth <htomy92@gmail.com> (http://icetee.hu)
- * @version v0.9.7
+ * Date 2018-12-25T03:13:56Z
+ * 
+ * @author Tamás András Horváth <htomy92@gmail.com> (https://icetee.hu)
+ * @version v1.0.0
  * @link https://github.com/icetee/cookiebar#readme
  * @license MIT
  */
 
 .cookiebar {
-    background-color: #2C3E50;
-    bottom: 0;
-    box-sizing: initial;
-    color: #fff;
-    min-height: 50px;
-    left: 0;
-    position: fixed;
-    width: 100%;
+  background-color: #2C3E50;
+  bottom: 0;
+  -webkit-box-sizing: initial;
+  box-sizing: initial;
+  color: #fff;
+  min-height: 50px;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 9;
 }
+
 .cookiebar-wrapper {
-    height: 100%;
-    overflow: hidden;
-    padding: 14px;
-    width: 85%;
+  height: 100%;
+  overflow: hidden;
+  padding: 14px;
 }
+
+.cookiebar-content {
+  display: inline-block;
+  width: 90%;
+  vertical-align: middle;
+}
+
+.cookiebar-actions {
+  width: 10%;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+}
+
 .cookiebar-desciption {
-    display: inline;
-    font-size: 1em;
+  display: inline;
+  font-size: 16px;
 }
+
 .cookiebar-link {
-    display: inline;
-    padding-left: 5px;
+  display: inline;
+  padding-left: 5px;
 }
+
 .cookiebar-link a {
-    color: #3498db;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: none;
 }
+
 .cookiebar-link a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
+
+.cookiebar-button {
+  display: inline-block;
+  vertical-align: middle;
+  width: auto;
+}
+
 .cookiebar-btn {
-    background: #e74c3c none repeat scroll 0 0;
-    border: 0 none;
-    color: #fff;
-    cursor: pointer;
-    font-size: 0.875em;
-    height: 28px;
-    padding: 0 10px 2px;
-    position: absolute;
-    right: 20px;
-    text-transform: uppercase;
-    margin: auto;
-    top: 0;
-    bottom: 0;
+  background: #e74c3c none repeat scroll 0 0;
+  border: 0 none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  height: 28px;
+  padding: 0 10px 2px;
+  text-transform: uppercase;
+  margin: auto;
 }
+
 .cookiebar-btn:hover {
-    background: #d34c37 none repeat scroll 0 0;
+  background: #d34c37 none repeat scroll 0 0;
+}
+
+@media screen and (max-width: 767px) {
+  .cookiebar-actions {
+    width: 100%;
+    text-align: left;
+    margin: 8px 0 0 0;
+  }
 }

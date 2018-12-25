@@ -67,6 +67,7 @@ ready(function() {
 
 - [x] Vanilla javascript (no dependencies)
 - [x] Only appears when you use cookies
+- [x] Supported webpack
 - [ ] Add support language
 - [ ] Check AdBlocker
 
@@ -80,7 +81,7 @@ npm install
 
 #### Note
 - Browsers default don't support Cookies in local files!
- - Use webserver `$ gulp server`
+- Use webserver `$ gulp server`
 
 # Contribute
 
