@@ -83,7 +83,7 @@ gulp.task('build', ['styles', 'scripts']);
 
 gulp.task('server', ['build'], function() {
     // Start server
-    server.run(['index.js']);
+    server.run(['test/server.js']);
 
     // Restart the server when file changes
     gulp.watch([paths.watch.css], ['styles'], server.notify);
@@ -93,7 +93,7 @@ gulp.task('server', ['build'], function() {
 // Events
 gulp.task('start', ['build'], function() {
     // Disable livereload
-    server.run(['index.js'], null, false);
+    server.run(['test/server.js'], null, false);
 });
 
 // Set default task

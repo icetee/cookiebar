@@ -1,11 +1,11 @@
 /**
  * cookiebar - It is a pure JS code, that warns the visitors in the notification bar, the page saves cookies. This is Compliant with the new EU cookie law.
- * Date 2017-08-08T12:26:15Z
+ * Date 2018-12-25T03:13:56Z
  * 
- * @author Tamás András Horváth <htomy92@gmail.com> (http://icetee.hu)
- * @version v0.9.7
+ * @author Tamás András Horváth <htomy92@gmail.com> (https://icetee.hu)
+ * @version v1.0.0
  * @link https://github.com/icetee/cookiebar#readme
  * @license MIT
  */
 
-.cookiebar{background-color:#2c3e50;bottom:0;box-sizing:initial;color:#fff;min-height:50px;left:0;position:fixed;width:100%}.cookiebar-wrapper{height:100%;overflow:hidden;padding:14px;width:85%}.cookiebar-desciption{display:inline;font-size:1em}.cookiebar-link{display:inline;padding-left:5px}.cookiebar-link a{color:#3498db;text-decoration:none}.cookiebar-link a:hover{text-decoration:underline}.cookiebar-btn{background:#e74c3c none repeat scroll 0 0;border:0 none;color:#fff;cursor:pointer;font-size:.875em;height:28px;padding:0 10px 2px;position:absolute;right:20px;text-transform:uppercase;margin:auto;top:0;bottom:0}.cookiebar-btn:hover{background:#d34c37 none repeat scroll 0 0}
+.cookiebar{background-color:#2c3e50;bottom:0;box-sizing:initial;color:#fff;min-height:50px;left:0;position:fixed;width:100%;z-index:1}.cookiebar-wrapper{height:100%;overflow:hidden;padding:14px}.cookiebar-content{width:90%}.cookiebar-actions,.cookiebar-content{display:inline-block;vertical-align:middle}.cookiebar-actions{width:10%;text-align:center}.cookiebar-desciption{display:inline;font-size:16px}.cookiebar-link{display:inline;padding-left:5px}.cookiebar-link a{color:#fff;text-decoration:none}.cookiebar-link a:hover{text-decoration:underline}.cookiebar-button{display:inline-block;vertical-align:middle;width:auto}.cookiebar-btn{background:#e74c3c none repeat scroll 0 0;border:0 none;color:#fff;cursor:pointer;font-size:14px;height:28px;padding:0 10px 2px;text-transform:uppercase;margin:auto}.cookiebar-btn:hover{background:#d34c37 none repeat scroll 0 0}@media screen and (max-width:767px){.cookiebar-actions{width:100%;text-align:left;margin:8px 0 0}}
