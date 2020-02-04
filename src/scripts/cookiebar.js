@@ -143,6 +143,7 @@
         doc.body.style.marginBottom = self.bar.offsetHeight + "px";
       }
     };
+    this.onAccept = typeof this.opt.onAccept === 'function' ? this.opt.onAccept : function(){};
     //Initialize
     this.init();
   };
@@ -230,6 +231,7 @@
   Cookiebar.prototype.accept = function() {
     this.accepted = true;
     this.setCookie(this.data.cookie, true, 365);
+    this.onAccept();
 
     v.removeEvent(window, 'resize', this.events.winResize);
 
@@ -271,6 +273,8 @@
     this.accepted = this.getCookie(this.data.cookie) === "true";
     if (!this.accepted) {
       this.draw();
+    } else {
+      this.onAccept();
     }
   };
 
