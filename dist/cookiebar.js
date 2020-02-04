@@ -1,6 +1,6 @@
 /**
  * cookiebar - It is a pure JS code, that warns the visitors in the notification bar, the page saves cookies. This is Compliant with the new EU cookie law.
- * Date 2018-12-25T03:13:56Z
+ * Date 2020-02-04T16:33:37Z
  * 
  * @author Tamás András Horváth <htomy92@gmail.com> (https://icetee.hu)
  * @version v1.0.0
@@ -152,6 +152,7 @@
         doc.body.style.marginBottom = self.bar.offsetHeight + "px";
       }
     };
+    this.onAccept = typeof this.opt.onAccept === 'function' ? this.opt.onAccept : function(){};
     //Initialize
     this.init();
   };
@@ -238,6 +239,7 @@
   Cookiebar.prototype.accept = function() {
     this.accepted = true;
     this.setCookie(this.data.cookie, true, 365);
+    this.onAccept();
 
     v.removeEvent(window, 'resize', this.events.winResize);
 
@@ -279,6 +281,8 @@
     this.accepted = this.getCookie(this.data.cookie) === "true";
     if (!this.accepted) {
       this.draw();
+    } else {
+      this.onAccept();
     }
   };
 

@@ -58,6 +58,9 @@ ready(function() {
             ms: "500",
             display: "inline"
         },
+        onAccept: function () {
+          // Invoked on OK button or on load if already accepted.
+        },
         debug: 0
     });
 });

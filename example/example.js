@@ -25,6 +25,9 @@ ready(function() {
       link: "@icetee/cookiebar",
       href: "https://github.com/icetee/cookiebar",
       button: "OK"
+    },
+    onAccept: function () {
+      console.log("Cookie accepted");
     }
   });
 });
