@@ -113,6 +113,7 @@
         description: "The site uses cookies to operate. By using our services you agree to use the cookies!",
         link: "More information",
         href: "http://ec.europa.eu/ipg/basics/legal/cookies/index_en.htm",
+        target: "_self",
         button: "Accept",
         more: ""
       },
@@ -142,6 +143,7 @@
         doc.body.style.marginBottom = self.bar.offsetHeight + "px";
       }
     };
+    this.onAccept = typeof this.opt.onAccept === 'function' ? this.opt.onAccept : function(){};
     //Initialize
     this.init();
   };
@@ -198,7 +200,7 @@
       '<div class="${cls}-content">' +
       '<div class="${cls}-desciption">${des}</div>' +
       '<div class="${cls}-link">' +
-      '<a href="${href}">${link}</a>' +
+      '<a target="${target}" href="${href}">${link}</a>' +
       '</div>' +
       '</div>' +
       '<div class="${cls}-more" style="display: none;">${more}</div>' +
@@ -213,6 +215,7 @@
       cls: this.data.cls,
       href: this.data.content.href,
       link: this.data.content.link,
+      target: this.data.content.target,
       more: this.data.content.more,
       btn: this.data.content.button,
       des: this.data.content.description
@@ -228,6 +231,7 @@
   Cookiebar.prototype.accept = function() {
     this.accepted = true;
     this.setCookie(this.data.cookie, true, 365);
+    this.onAccept();
 
     v.removeEvent(window, 'resize', this.events.winResize);
 
@@ -269,6 +273,8 @@
     this.accepted = this.getCookie(this.data.cookie) === "true";
     if (!this.accepted) {
       this.draw();
+    } else {
+      this.onAccept();
     }
   };
 

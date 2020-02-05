@@ -50,6 +50,7 @@ ready(function() {
             description: "The site uses cookies to operate. By using our services you agree to use the cookies!",
             link: "More information",
             href: "http://ec.europa.eu/ipg/basics/legal/cookies/index_en.htm",
+            target: "_self",
             button: "Accept",
             more: "..."
         },
@@ -57,6 +58,9 @@ ready(function() {
             type: "in",
             ms: "500",
             display: "inline"
+        },
+        onAccept: function () {
+          // Invoked on OK button or on load if already accepted.
         },
         debug: 0
     });
