@@ -3,8 +3,8 @@
   bottom: 0;
   box-sizing: initial;
   color: #fff;
-  min-height: 50px;
   left: 0;
+  min-height: 50px;
   position: fixed;
   width: 100%;
   z-index: 9;
@@ -18,15 +18,15 @@
 
 .cookiebar-content {
   display: inline-block;
-  width: 90%;
   vertical-align: middle;
+  width: 90%;
 }
 
 .cookiebar-actions {
-  width: 10%;
   display: inline-block;
-  vertical-align: middle;
   text-align: center;
+  vertical-align: middle;
+  width: 10%;
 }
 
 .cookiebar-desciption {
@@ -61,9 +61,9 @@
   cursor: pointer;
   font-size: 14px;
   height: 28px;
+  margin: auto;
   padding: 0 10px 2px;
   text-transform: uppercase;
-  margin: auto;
 }
 
 .cookiebar-btn:hover {
@@ -72,8 +72,8 @@
 
 @media screen and (max-width: 767px) {
   .cookiebar-actions {
-    width: 100%;
-    text-align: left;
     margin: 8px 0 0 0;
+    text-align: left;
+    width: 100%;
   }
 }
